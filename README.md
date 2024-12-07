@@ -60,7 +60,7 @@ If you have Git installed on your system, then it is also possible to install th
 poetry build
 pip install dist/graph_sampling-0.0.2-py3-none-any.whl
 ```
-Or you can download it from releases.
+Or you can download whl file from releases.
  
 ### Usage
 
