@@ -1,14 +1,16 @@
 # import json
 # import sys
 import random
+
 # import math
 # import time
 import networkx as nx
+
 # import matplotlib.pyplot as plt
 # from collections import defaultdict
 
 
-class Queue():
+class Queue:
     # Constructor creates a list
     def __init__(self):
         self.queue = list()
@@ -38,7 +40,7 @@ class Queue():
         return self.queue
 
 
-class Snowball():
+class Snowball:
 
     def __init__(self):
         self.G1 = nx.Graph()
@@ -48,23 +50,23 @@ class Snowball():
         list_nodes = list(G.nodes())
         m = k
         dictt = set()
-        while(m):
+        while m:
             id = random.sample(list(G.nodes()), 1)[0]
             q.enqueue(id)
             m = m - 1
         # print(q.printQueue())
-        while(len(self.G1.nodes()) <= size):
-            if(q.size() > 0):
+        while len(self.G1.nodes()) <= size:
+            if q.size() > 0:
                 id = q.dequeue()
                 self.G1.add_node(id)
-                if(id not in dictt):
+                if id not in dictt:
                     dictt.add(id)
                     list_neighbors = list(G.neighbors(id))
-                    if(len(list_neighbors) > k):
+                    if len(list_neighbors) > k:
                         for x in list_neighbors[:k]:
                             q.enqueue(x)
                             self.G1.add_edge(id, x)
-                    elif(len(list_neighbors) <= k and len(list_neighbors) > 0):
+                    elif len(list_neighbors) <= k and len(list_neighbors) > 0:
                         for x in list_neighbors:
                             q.enqueue(x)
                             self.G1.add_edge(id, x)

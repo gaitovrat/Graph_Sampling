@@ -1,10 +1,12 @@
 import random
+
 # import time
 import networkx as nx
+
 # import matplotlib.pyplot as plt
 
 
-class MHRW():
+class MHRW:
     def __init__(self):
         self.G1 = nx.Graph()
 
@@ -18,15 +20,17 @@ class MHRW():
         related_list = list(G.neighbors(parent_node))
         node_list.update(related_list)
 
-        while(len(self.G1.nodes()) < size):
-            if(len(node_list) > 0):
+        while len(self.G1.nodes()) < size:
+            if len(node_list) > 0:
                 child_node = node_list.pop()
                 p = round(random.uniform(0, 1), 4)
-                if(child_node not in dictt):
+                if child_node not in dictt:
                     related_listt = list(G.neighbors(child_node))
                     degree_c = G.degree(child_node)
                     dictt[child_node] = child_node
-                    if(p <= min(1, degree_p / degree_c) and child_node in list(G.neighbors(parent_node))):
+                    if p <= min(1, degree_p / degree_c) and child_node in list(
+                        G.neighbors(parent_node)
+                    ):
                         self.G1.add_edge(parent_node, child_node)
                         parent_node = child_node
                         degree_p = degree_c
@@ -38,7 +42,9 @@ class MHRW():
             # node_list set becomes empty or size is not reached
             # insert some random nodes into the set for next processing
             else:
-                node_list.update(random.sample(set(G.nodes()) - set(self.G1.nodes()), 3))
+                node_list.update(
+                    random.sample(set(G.nodes()) - set(self.G1.nodes()), 3)
+                )
                 parent_node = node_list.pop()
                 G.add_node(parent_node)
                 related_list = list(G.neighbors(parent_node))
