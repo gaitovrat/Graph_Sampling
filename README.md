@@ -57,7 +57,7 @@ The Graph Sampling package requires [Python](https://www.python.org/downloads/) 
 ### Installing the development version
 If you have Git installed on your system, then it is also possible to install the development version of Graph Sampling package by running these commands on your terminal:
 ```sh
-poetry build
+python setup.py sdist bdist_wheel
 pip install dist/graph_sampling-0.0.2-py3-none-any.whl
 ```
 Or you can download whl file from releases.
